@@ -10,6 +10,10 @@
   --white: #fff;
 }
 
+p {
+  text-wrap: pretty;
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -314,13 +318,12 @@ footer {
 .grid-footer {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
-
-.footer-colum-1 h3 { font-size: 35px; }
-.footer-colum-2 { margin-left: auto; }
-.footer-colum-2 h2 { font-size: 35px; text-align: center; }
-.footer-colum-2 h3 { font-size: 20px; }
+.footer-colum-1 { margin-right: auto;
+margin-left: auto;}
+.footer-colum-1 h2 { font-size: 35px; text-align: center; }
+.footer-colum-1 h3 { font-size: 20px; text-align: center;}
 .footer-info h3 { margin-bottom: 10px; text-align: center; }
 .footer-info p { opacity: 0.7; }
 
