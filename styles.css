@@ -206,14 +206,14 @@ h3 { margin-bottom: 8px; font-size: 24px; }
 
 .not-user-colum button, .filters button {
   min-height: 38px;
-  background: #fee9e9;
-  color: #f42e2e;
+  background: #e9feed;
+  color: #62bf45;
   transition: all 0.2s ease;
 }
 
 .not-user-colum button.active, .filters button.active {
-  background: #f42e2e;
-  color: #fee9e9;
+  background: #62bf45;
+  color: #e9feed;
 }
 
 .route-grid, .catalog-grid, .events {
