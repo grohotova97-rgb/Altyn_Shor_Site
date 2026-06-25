@@ -536,7 +536,7 @@ margin-left: auto;}
   right: 0;
   background: var(--white);
   border-top: 1px solid var(--line);
-  z-index: 5;
+  z-index: 99;
 }
 
 .legend-toggle {
@@ -609,6 +609,8 @@ margin-left: auto;}
 
   
   .mobile-legend {
+    overflow: auto;
+    max-height: 300px;
     display: block;
   }
   
