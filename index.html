@@ -199,8 +199,17 @@
                 <button data-layer="">Свободные участки</button>
               </div>
             </div>
-            <img id="schemeImage" src="assets/album-14.jpg" alt="Схема проекта" />
+            <img id="schemeImage" src="assets/album-14.jpg" alt="Схема проекта" class="scheme__image" />
           </div>
+
+<!-- Модальное окно для просмотра изображения -->
+<div id="imageModal" class="image-modal">
+  <div class="image-modal__content">
+    <button class="image-modal__close" aria-label="Закрыть">×</button>
+    <img id="modalImage" src="" alt="Увеличенное изображение" class="image-modal__img" />
+    <div class="image-modal__caption" id="modalCaption"></div>
+  </div>
+</div>
   </div>
 </section>
 

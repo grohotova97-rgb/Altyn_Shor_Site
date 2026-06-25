@@ -131,3 +131,53 @@ document.addEventListener('click', function(e) {
     }
   }
 });
+
+// === MODAL FOR SCHEME IMAGES ===
+// === MODAL FOR SCHEME IMAGES ===
+const modal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+const modalCaption = document.getElementById('modalCaption');
+// Переменная schemeImage уже объявлена выше, используем её повторно
+const modalClose = document.querySelector('.image-modal__close');
+
+// Открытие модального окна при клике на изображение
+if (schemeImage) {
+  schemeImage.addEventListener('click', () => {
+    const activeButton = document.querySelector('.scheme__tabs button.active');
+    const imageName = activeButton ? activeButton.textContent : 'Схема проекта';
+    
+    modalImage.src = schemeImage.src;
+    modalCaption.textContent = imageName;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
+  });
+}
+
+// Закрытие модального окна
+function closeModal() {
+  modal.classList.remove('is-open');
+  document.body.style.overflow = ''; // Возвращаем прокрутку
+  setTimeout(() => {
+    modalImage.src = '';
+  }, 300);
+}
+
+if (modalClose) {
+  modalClose.addEventListener('click', closeModal);
+}
+
+// Закрытие по клику вне изображения
+if (modal) {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+}
+
+// Закрытие по клавише Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+    closeModal();
+  }
+});
