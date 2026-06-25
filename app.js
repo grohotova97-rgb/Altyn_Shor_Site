@@ -71,3 +71,63 @@ document.querySelectorAll("[data-filter]").forEach((button) => {
     });
   });
 });
+
+// === ИНТЕРАКТИВНАЯ КАРТА ===
+const mapPoints = document.querySelectorAll('.map-point');
+const legendToggle = document.querySelector('.legend-toggle');
+const legendContent = document.querySelector('.legend-content');
+
+// Обработка наведения на точки карты (для десктопа)
+mapPoints.forEach(point => {
+  point.addEventListener('mouseenter', function() {
+    // Можно добавить дополнительную логику при наведении
+    console.log('Наведение на:', this.dataset.name);
+  });
+  
+  point.addEventListener('click', function() {
+    // На мобильных устройствах показываем tooltip при клике
+    if (window.innerWidth <= 640) {
+      // Закрываем другие tooltip
+      mapPoints.forEach(p => {
+        if (p !== this) {
+          p.querySelector('.point-tooltip').style.opacity = '0';
+          p.querySelector('.point-tooltip').style.visibility = 'hidden';
+        }
+      });
+      
+      const tooltip = this.querySelector('.point-tooltip');
+      const isVisible = tooltip.style.opacity === '1';
+      
+      tooltip.style.opacity = isVisible ? '0' : '1';
+      tooltip.style.visibility = isVisible ? 'hidden' : 'visible';
+    }
+  });
+});
+
+// Закрытие tooltip при клике вне карты
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.map-point')) {
+    mapPoints.forEach(point => {
+      point.querySelector('.point-tooltip').style.opacity = '0';
+      point.querySelector('.point-tooltip').style.visibility = 'hidden';
+    });
+  }
+});
+
+// Обработка раскрытия легенды на мобильных
+if (legendToggle) {
+  legendToggle.addEventListener('click', function() {
+    this.classList.toggle('active');
+    legendContent.classList.toggle('show');
+  });
+}
+
+// Закрытие легенды при клике вне её
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.mobile-legend') && window.innerWidth <= 640) {
+    if (legendToggle && legendContent) {
+      legendToggle.classList.remove('active');
+      legendContent.classList.remove('show');
+    }
+  }
+});
